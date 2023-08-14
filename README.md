@@ -4,7 +4,7 @@
 
 This repository is to perform climate analysis on Honolulu, Hawaii. The climate analysis is done using SQLAlchemy and Python which is in climate_analysis.ipynb file, and flask web application is built in app.py file and the SQLAlchemy file was provided in hawaii.sqlite.
 
-Technologies used: Python(Numpy, Pandas, Matplotlib), SQLAlchemy, FLASK
+Technologies used: Python(Numpy, Pandas, Matplotlib), SQLAlchemy (ORM), FLASK
 
 ### Part 1: Analyze and Explore the Climate Data
 
@@ -33,7 +33,7 @@ Technologies used: Python(Numpy, Pandas, Matplotlib), SQLAlchemy, FLASK
 4. Designed a query to get the previous 12 months of temperature observation (TOBS) data. To do so, completed the following steps:
     - Filtered by the station that has the greatest number of observations.
     - Performed a query on the previous 12 months of TOBS data for that station.
-    - Plot the results as a histogram with bins=12
+    - Plot the results as a histogram with bins = 12
 
 ### Part 2: Design Your Climate App
 Designed a Flask API based on the queries that were developed above.
@@ -41,18 +41,18 @@ Used FLASK to create the following routes.
 Used Flask jsonify to convert your API data into a valid JSON response object.
 
 These are the following routes defined:
-1. /
+1. / <br>
    This is for the homepage.
 
-2. /api/v1.0/precipitation
+2. /api/v1.0/precipitation <br>
    Convert the query results from your precipitation analysis (i.e. retrieve only the last 12 months of data) to a dictionary using date as the key and prcp as the value.
 
    Return the JSON representation of your dictionary.
 
-3. /api/v1.0/stations
+3. /api/v1.0/stations <br>
    Return a JSON list of stations from the dataset.
 
-4. /api/v1.0/tobs
+4. /api/v1.0/tobs <br>
    Query the dates and temperature observations of the most-active station for the previous year of data.
 
    Return a JSON list of temperature observations for the previous year.

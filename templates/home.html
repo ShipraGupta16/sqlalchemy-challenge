@@ -1,0 +1,50 @@
+<html>
+<head>
+        <title>Honolulu, Hawaii Climate App</title>
+        <style>
+            img { 
+              width: 100%; 
+            }
+        </style>
+    </head>
+    <body>
+        <h1><center>Welcome to Surf's Up!</center></h1>
+        
+        <li>
+            The precipitation observations for the last one year:
+                <a href= '/api/v1.0/precipitation'> precipitation records</a>
+        </li>
+        <br>
+
+        <li>
+            List of temperature observations (tobs) for the last one year:
+                <a href= '/api/v1.0/tobs'> last year's temperature record</a>
+        </li>
+        <br>
+
+        <li>
+            Records for lowest, highest and average temperatures for a start date (YYYY-MM-DD):
+                <a href="/api/v1.0/2016-12-23"> temperature records for a date range</a>
+        </li>
+        <br>
+        <li>
+            Records for the minimum, average and the maximum temperatures for a start and end date (Enter date in YYYY-MM-DD format):<br>
+            <br>    
+                <form action="/api/v1.0" target="_blank" method="GET">
+                    &ensp; Start Date:
+                        <input type="text" name="Start Date" value="2016-12-06">
+                    <br><br>
+                    &ensp; End Date:
+                        <input type="text" name="End Date" value="2016-12-24">
+                    <br><br>
+                    &ensp;<input type="submit" value="Submit" style="font-size: medium; background-color: #DCDCDC">
+                </form>
+        </li>
+        </h4>
+            <ul style="list-style-type:none;">
+            <li>Date format is YYYY-MM-DD</li>
+            <li>Preciptation: mm; Temperature: F </li>   
+            </ul>
+    </body>
+</html>
+
