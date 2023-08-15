@@ -2,7 +2,9 @@
 
 ### Objective:
 
-This repository is to perform climate analysis on Honolulu, Hawaii. The climate analysis is done using SQLAlchemy and Python which is in climate_analysis.ipynb file, and flask web application is built in app.py file and the SQLAlchemy file was provided in hawaii.sqlite.
+This repository is to perform climate analysis on Honolulu, Hawaii. The climate analysis is done using SQLAlchemy and Python which is in climate_analysis.ipynb file, and flask web application is built in app.py file and the SQLAlchemy file was provided in hawaii.sqlite. 
+
+In order to run the flask application, use this command: flask run --port 8000
 
 Technologies used: Python(Numpy, Pandas, Matplotlib), SQLAlchemy (ORM), FLASK
 

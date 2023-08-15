@@ -1,5 +1,5 @@
 # Import the dependencies.
-# import sqlalchemy
+import sqlalchemy
 from flask import Flask, jsonify, render_template, request
 from sqlalchemy import create_engine, func
 from sqlalchemy.ext.automap import automap_base
@@ -7,6 +7,7 @@ from sqlalchemy.orm import Session
 from pathlib import Path
 import pandas as pd
 import datetime as dt
+
 #################################################
 # Database Setup
 #################################################
@@ -76,19 +77,23 @@ def precipitation():
             all_prcp.append(precip_dict)
     return jsonify(all_prcp)
 
-
 @app.route("/api/v1.0/stations")
 def stations():
     # Return a JSON list of stations from the dataset.
     session = Session(engine)
     
     # Query for stations.
-    stations = session.query(Station.station, Station.name,
-                             Station.latitude, Station.longitude, Station.elevation).all()
-
+    stations = session.query(Station.station, Station.name).all()
+   
+    # Return the JSON representation of your dictionary.
+    all_stations = []
+    for station, name in stations:
+        if name != None:
+            stations_dict = {}
+            stations_dict[station] = name
+            all_stations.append(stations_dict)
     session.close()
-    return jsonify(stations)
-    
+    return jsonify(all_stations) 
 
 @app.route("/api/v1.0/tobs")
 def tobs():
@@ -171,18 +176,18 @@ def start(start):
     # Create a dictionary from the row data and append to a list of min, avg, and max temperature
     
     
-@app.route("/api/v1.0/<start>/<end>")
-def start_end(start, end):
+@app.route("/api/v1.0/start-end", methods = ['GET'])
+def start_end():
     session = Session(engine) 
+    
     """Returns the JSON list of the minimum, average and the maximum temperatures for a given start date and end date(YYYY-MM-DD)"""
     start = request.args.get("Start Date")
     end = request.args.get("End Date")
 
-
-    temps = calc_temps(start, last_date)
+    temps = calc_temps(start, end)
     # Create a list to store the temperature records
     temp_list = []
-    date_dict = {"Start Date": start, "End Date": last_date}
+    date_dict = {"Start Date":start, "End Date":end}
     temp_list.append(date_dict)
     temp_list.append(
         {"Observation": "Minimum Temperature", "Temperature(F)": temps[0][0]}
@@ -193,4 +198,5 @@ def start_end(start, end):
     temp_list.append(
         {"Observation": "Maximum Temperature", "Temperature(F)": temps[0][2]}
     )
+    session.close()
     return jsonify(temp_list)
