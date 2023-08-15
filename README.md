@@ -4,7 +4,8 @@
 
 This repository is to perform climate analysis on Honolulu, Hawaii. The climate analysis is done using SQLAlchemy and Python which is in climate_analysis.ipynb file, and flask web application is built in app.py file and the SQLAlchemy file was provided in hawaii.sqlite. 
 
-In order to run the flask application, use this command: flask run --port 8000
+In order to run the flask application, use this command: <br>
+`flask run --port 8000`
 
 Technologies used: Python(Numpy, Pandas, Matplotlib), SQLAlchemy (ORM), FLASK
 
@@ -43,25 +44,22 @@ Used FLASK to create the following routes.
 Used Flask jsonify to convert your API data into a valid JSON response object.
 
 These are the following routes defined:
-1. / <br>
+1. `/` <br>
    This is for the homepage.
 
-2. /api/v1.0/precipitation <br>
-   Convert the query results from your precipitation analysis (i.e. retrieve only the last 12 months of data) to a dictionary using date as the key and prcp as the value.
+2. `/api/v1.0/precipitation` <br>
+   - Convert the query results from your precipitation analysis (i.e. retrieve only the last 12 months of data) to a dictionary using date as the key and prcp as the value.
+   - Return the JSON representation of your dictionary.
 
-   Return the JSON representation of your dictionary.
-
-3. /api/v1.0/stations <br>
+3. `/api/v1.0/stations` <br>
    Return a JSON list of stations from the dataset.
 
-4. /api/v1.0/tobs <br>
-   Query the dates and temperature observations of the most-active station for the previous year of data.
+4. `/api/v1.0/tobs` <br>
+   - Query the dates and temperature observations of the most-active station for the previous year of data.
+   - Return a JSON list of temperature observations for the previous year.
 
-   Return a JSON list of temperature observations for the previous year.
+5. `/api/v1.0/<start>` and `/api/v1.0/<start>/<end>` <br>
+   - Return a JSON list of the minimum temperature, the average temperature, and the maximum temperature for a specified start or start-end range.
+   - For a specified start, calculate TMIN, TAVG, and TMAX for all the dates greater than or equal to the start date.
 
-5. /api/v1.0/<start> and /api/v1.0/<start>/<end>
-   Return a JSON list of the minimum temperature, the average temperature, and the maximum temperature for a specified start or start-end range.
-
-   For a specified start, calculate TMIN, TAVG, and TMAX for all the dates greater than or equal to the start date.
-
-   For a specified start date and end date, calculate TMIN, TAVG, and TMAX for the dates from the start date to the end date, inclusive.
+   - For a specified start date and end date, calculate TMIN, TAVG, and TMAX for the dates from the start date to the end date, inclusive.
